@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import { dbConnection } from "./dbConnection.js";
 import { graphqlHTTP } from "express-graphql";
-import schema  from "./GraphQl/Schema/schema.js";
+import schema  from "./GraphQl/schema.js";
 const app = express();
 
 dotenv.config();
@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 dbConnection;
 
 app.use("/graphql"
-    ,graphqlHTTP({
+,graphqlHTTP({
 schema,
 graphiql:true
 }

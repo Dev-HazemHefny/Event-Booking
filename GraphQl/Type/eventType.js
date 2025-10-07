@@ -1,18 +1,6 @@
-import {
-  GraphQLID,
-  GraphQLInt,
-  GraphQLObjectType,
-  GraphQLString,
-} from "graphql";
-
-export const UserType = new GraphQLObjectType({
-  name: "UserType",
-  fields: () => ({
-    id: { type: GraphQLID },
-    name: { type: GraphQLString },
-    email: { type: GraphQLString },
-  }),
-});
+import { GraphQLID, GraphQLInt, GraphQLObjectType, GraphQLString } from "graphql";
+import User from "../../Models/User.js";
+import { UserType } from "./userType.js";
 
 export const EventType = new GraphQLObjectType({
   name: "EventType",
@@ -28,10 +16,13 @@ export const EventType = new GraphQLObjectType({
     total_tickets: { type: GraphQLInt },
     available_tickets: { type: GraphQLInt },
     status: { type: GraphQLString },
-
+    
       // العلاقات مع باقي الـ Models
     // category: { type: CategoryType },
     // venue: { type: VenueType },
-    // organizer: { type: UserType },
+     organizer: { type: UserType,async resolve(parent,args){
+      const user = await User.findById(parent.organizerId);
+      return user
+    } },
   }),
 });

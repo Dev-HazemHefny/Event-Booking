@@ -1,0 +1,49 @@
+// get users 
+
+{
+  users {
+    id
+    name
+    email
+  }
+}
+
+
+//single user 
+
+{
+  user(id: "6702c9e1b1a23c75f4a8e7c2") {
+    name
+    email
+  }
+}
+
+//get events 
+
+{
+  events {
+    id
+    title
+    price
+    category {
+      name
+    }
+    organizer {
+      name
+    }
+  }
+}
+
+/single event 
+
+{
+  event(id: "6702cb1db1a23c75f4a8e7d4") {
+    title
+    date
+    price
+    organizer {
+      name
+      email
+    }
+  }
+}
