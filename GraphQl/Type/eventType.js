@@ -20,7 +20,7 @@ export const EventType = new GraphQLObjectType({
       // العلاقات مع باقي الـ Models
     // category: { type: CategoryType },
     // venue: { type: VenueType },
-     organizer: { type: UserType,async resolve(parent,args){
+     organizer: { type: UserType,async resolve(parent){
       const user = await User.findById(parent.organizerId);
       return user
     } },
