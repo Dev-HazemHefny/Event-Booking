@@ -1,6 +1,10 @@
 import { GraphQLID, GraphQLInt, GraphQLObjectType, GraphQLString } from "graphql";
 import User from "../../Models/User.js";
 import { UserType } from "./userType.js";
+import Category from "../../Models/Category.js";
+import { CategoryType } from "./categoryType.js";
+import Venue from "../../Models/Venue.js";
+import { VenueType } from "./venueType.js";
 
 export const EventType = new GraphQLObjectType({
   name: "EventType",
@@ -18,10 +22,18 @@ export const EventType = new GraphQLObjectType({
     status: { type: GraphQLString },
     
       // العلاقات مع باقي الـ Models
-    // category: { type: CategoryType },
-    // venue: { type: VenueType },
+    category: { type: CategoryType,async resolve(parent){
+      const category = await Category.findById(parent.category);
+      return category
+    }},
+    venue: { type: VenueType,
+      async resolve(parent){
+        const venue = await Venue.findById(parent.venue);
+        return venue
+      }
+     },
      organizer: { type: UserType,async resolve(parent){
-      const user = await User.findById(parent.organizerId);
+      const user = await User.findById(parent.organizer);
       return user
     } },
   }),

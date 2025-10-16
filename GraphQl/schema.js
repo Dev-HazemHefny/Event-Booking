@@ -3,7 +3,11 @@ import { GraphQLObjectType, GraphQLSchema } from "graphql";
 import userQueries from "./Queries/userQueries.js";
 import eventQueries from "./Queries/eventQueries.js";
 import { userMutations } from "./Mutaions/userMutations.js";
-
+import VenueQueries from "./Queries/venueQueries.js";
+import categoryQueries from "./Queries/categoryQueries.js";
+import { categoryMutations } from "./Mutaions/categoryMutations.js";
+import { venueMutations } from "./Mutaions/venueMutation.js";
+import { eventMutations } from "./Mutaions/eventMutations.js";
 
 //The RootQuery is the entry point for querying data.
 //  It's like the main menu of options you have when you want to retrieve information.
@@ -12,19 +16,23 @@ const RootQuery = new GraphQLObjectType({
   fields: () => ({
     ...userQueries,
     ...eventQueries,
-    
+    ...VenueQueries,
+    ...categoryQueries,
   }),
 });
 
 const RootMutation = new GraphQLObjectType({
   name: "RootMutation",
+
   fields: () => ({
     ...userMutations,
+    ...categoryMutations,
+    ...venueMutations,
+    ...eventMutations
   }),
 });
 
-
 export default new GraphQLSchema({
   query: RootQuery,
-  mutation:RootMutation
+  mutation: RootMutation,
 });
