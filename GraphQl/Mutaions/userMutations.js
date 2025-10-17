@@ -27,7 +27,7 @@ export const userMutations = {
   },
   login: {
     type: GraphQLString,
-    args: {
+    args: { 
       email: { type: GraphQLString },
       password: { type: GraphQLString }
     },
