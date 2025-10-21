@@ -8,6 +8,7 @@ import categoryQueries from "./Queries/categoryQueries.js";
 import { categoryMutations } from "./Mutaions/categoryMutations.js";
 import { venueMutations } from "./Mutaions/venueMutation.js";
 import { eventMutations } from "./Mutaions/eventMutations.js";
+import { bookingMutations } from "./Mutaions/bookingMutations.js";
 
 //The RootQuery is the entry point for querying data.
 //  It's like the main menu of options you have when you want to retrieve information.
@@ -28,7 +29,8 @@ const RootMutation = new GraphQLObjectType({
     ...userMutations,
     ...categoryMutations,
     ...venueMutations,
-    ...eventMutations
+    ...eventMutations,
+    ...bookingMutations
   }),
 });
 
