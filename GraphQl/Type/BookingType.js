@@ -8,7 +8,7 @@ import {
 import { UserType } from "./userType.js";
 import { EventType } from "./eventType.js";
 import User from "../../Models/User.js";
-
+import Event from "../../Models/Event.js";
 export const BookingType = new GraphQLObjectType({
   name: "BookingType",
   fields: () => ({
