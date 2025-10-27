@@ -1,6 +1,6 @@
 // eventQueries.js
 import { GraphQLList, GraphQLID } from "graphql";
-import Event from "../../Models/Event.js";
+import Event from "../../Models/Event.js"
 import { EventType } from "../Type/eventType.js";
 
 const eventQueries = {
